@@ -1,13 +1,8 @@
-const stoogeSort = (arr, i = 0, j = arr.length - 1) => {
-  if (arr[i] > arr[j]) {
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+function minCostClimbingStairs(cost) {
+  const n = cost.length;
+  const dp = new Array(n + 1).fill(0);
+  for (let i = 2; i <= n; i++) {
+    dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
   }
-  if (i + 1 >= j) {
-    return arr;
-  }
-  const t = Math.floor((j - i + 1) / 3);
-  stoogeSort(arr, i, j - t);
-  stoogeSort(arr, i + t, j);
-  stoogeSort(arr, i, j - t);
-  return arr;
-};
+  return dp[n];
+}
