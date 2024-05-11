@@ -1,8 +1,25 @@
-function minCostClimbingStairs(cost) {
-  const n = cost.length;
-  const dp = new Array(n + 1).fill(0);
-  for (let i = 2; i <= n; i++) {
-    dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
+const cocktailShakerSort = (arr) => {
+  let swapped = true;
+  let start = 0;
+  let end = arr.length - 1;
+  while (swapped) {
+    swapped = false;
+    for (let i = start; i < end; i++) {
+      if (arr[i] > arr[i + 1]) {
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+        swapped = true;
+      }
+    }
+    if (!swapped) break;
+    swapped = false;
+    end--;
+    for (let i = end - 1; i >= start; i--) {
+      if (arr[i] > arr[i + 1]) {
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+        swapped = true;
+      }
+    }
+    start++;
   }
-  return dp[n];
-}
+  return arr;
+};
