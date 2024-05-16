@@ -1,9 +1,7 @@
-function canJump(nums) {
-  let maxJump = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if (i > maxJump) return false;
-    maxJump = Math.max(maxJump, i + nums[i]);
-    if (maxJump >= nums.length - 1) return true;
-  }
-  return false;
-}
+const remove = (arr, func) =>
+  Array.isArray(arr)
+    ? arr.filter(func).reduce((acc, val) => {
+        arr.splice(arr.indexOf(val), 1);
+        return acc.concat(val);
+      }, [])
+    : [];
