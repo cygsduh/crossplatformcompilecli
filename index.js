@@ -1,7 +1,2 @@
-const remove = (arr, func) =>
-  Array.isArray(arr)
-    ? arr.filter(func).reduce((acc, val) => {
-        arr.splice(arr.indexOf(val), 1);
-        return acc.concat(val);
-      }, [])
-    : [];
+const nthElement = (arr, n = 0) =>
+  (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[0];
